@@ -301,11 +301,15 @@ class IBBroker(with_metaclass(MetaIBBroker, BrokerBase)):
         self.cash = self.ib.get_acc_cash()
         logger.debug(f"get_acc_cash: {self.cash}")
         return self.cash
+    
+    get_cash = getcash
 
     def getvalue(self, datas=None):
         self.value = self.ib.get_acc_value()
         logger.debug(f"getvalue: {self.value}")
         return self.value
+
+    get_value = getvalue
 
     def getposition(self, data, clone=True):
         position = self.ib.getposition(data.tradecontract, clone=clone)
